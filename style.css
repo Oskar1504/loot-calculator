@@ -1,0 +1,31 @@
+#inhalte-werden-zentriert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#fehler{
+	color: red;
+	background-color: Coral;
+}
+body{
+	background: Dimgray;
+	font-size: 15px;
+	color: white;
+}
+
+header{
+	text-align: center;
+	color: black;
+}
+
+h1{
+	font-size: 50px;
+}
+
+h2{
+	font-size: 20px;
+}
+h3{
+	font-size: 30px;
+	margin-bottom:10px;
+}
