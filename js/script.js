@@ -69,6 +69,7 @@ function copyoption(quelle,ziel){
 function amount(){
 	document.getElementById("item_amount_new").value = document.getElementById("amount").value;
 	refreshdetailvalues();
+	refresh();
 	
 }
 
