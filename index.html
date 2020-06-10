@@ -20,7 +20,7 @@
 			</header>
 			<section>
 				<div id = "listen">
-					<select  onchange = "selectitem(this)">
+					<select id = "schadel" onchange = "selectitem(this)">
 						<option id = "text_liste_seelenorden" value = "0,0,0,0,0">Seelenorden</option>
 						<option id = "s1" class = "oos" value = "90,180,507,1,1">Verdorbener Schädel</option>
 						<option id = "s2" class = "oos" value = "180,350,1014,1,1">Ehrloser Schädel</option>
@@ -30,7 +30,7 @@
 						<option id = "sks" class = "oos" value = "850,220,6075,1,1">Skelettkäptainschädel</option>
 						<option id = "fs" class = "oos" value = "1800,4200,12150,1,1">Festungschädel</option>
 					</select>
-					<select  onchange = "selectitem(this)">
+					<select id = "kisten"  onchange = "selectitem(this)">
 						<option id = "text_liste_goldsammler" value = "0,0,0,0,0">Goldsammler</option>
 						<option id = "k1" class = "gh" value = "60,130,375,1,1">Schiffbrüchige Kiste</option>
 						<option id = "k2" class = "gh" value = "140,260,750,1,1">Seefahrer Kiste</option>
@@ -48,7 +48,7 @@
 						<option id = "text_liste_atefakt" value = "0,0,0,0,0">Artefakt</option>
 						<option id = "a1" class = "gh" value = "90,130,375,1,1">Bronze Artefakt</option>
 						<option id = "a2" class = "gh" value = "140,260,750,1,1">Silber Artefakt</option>
-						<option id = "a3" id = "w_kiste" class = "gh" value = "280,520,1500,1,1">Gold Artefakt</option>
+						<option id = "a3" class = "gh" value = "280,520,1500,1,1">Gold Artefakt</option>
 						<option id = "a4" class = "gh" value = "580,1100,3000,1,1">Jeweled Artefakt</option>
 						<option value = "0,0,0,0,0">---------</option>
 						<option id = "ad1" class = "gh" value = "140,260,750,1,1">Roaring Goblet</option>
@@ -112,7 +112,7 @@
 							
 							</td>
 							<td><input type = "text" id = "amount" value = "1" size="4" onchange = "refreshdetailvalues();"></td>
-							<td><center><input type = "checkbox" id = "ashen" onclick = "changeashen(this);" value = "ashen"></center></td>
+							<td><center><input disabled type = "checkbox" id = "ashen" onclick = "changeashen(this);" value = "ashen"></center></td>
 							<td><button id = "b_additem" onclick = "additempre();">Item hinzufügen</button></td>
 							<td><button id = "b_deleteitem" onclick = "deleteitem();">Item löschen </button></td>
 							<td><button id = "b_change" onclick = "change();">Anzahl ändern</button></td>

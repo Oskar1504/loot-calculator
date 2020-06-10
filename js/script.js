@@ -135,6 +135,7 @@ function speicherwertein(liste){
 
 function selectitem(item){
 
+	ashencheckbox(item);
 	document.getElementById("selecteditem").innerHTML = item.options[item.selectedIndex].outerHTML;
 
 	showdetailvalues();
@@ -177,7 +178,7 @@ function sum(){
 			wert_2 = Math.round(wert_2*flaggen_gold_factor());
 			wert_3 = Math.round(wert_3*flaggen_emi_factor());
 		}
-		if(document.getElementById("output").options[i].classList.contains("gh") == true   && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "gh_flagge"){
+		if(document.getElementById("output").options[i].classList.contains("gh") == true && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "gh_flagge"){
 			wert_1 = Math.round(wert_1*flaggen_gold_factor());
 			wert_2 = Math.round(wert_2*flaggen_gold_factor());
 			wert_3 = Math.round(wert_3*flaggen_emi_factor());
@@ -265,4 +266,13 @@ function flaggen_emi_factor(){
 
 }
 
+function ashencheckbox(item){
+	
+	if(item.id == "schadel" ||item.id == "kisten" ){
+		document.getElementById("ashen").disabled = false;
+	}else{
+		document.getElementById("ashen").disabled = true;
+	}
+	
+}
 
