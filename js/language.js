@@ -246,8 +246,8 @@ function deutsch(){
 	document.getElementById("k2").innerHTML = language.de.k2;
 	document.getElementById("k3").innerHTML = language.de.k3;
 	document.getElementById("k4").innerHTML = language.de.k4;
-	document.getElementById("sk").innerHTML = language.de.skk;
-	document.getElementById("fkk").innerHTML = language.de.fk;
+	document.getElementById("skk").innerHTML = language.de.skk;
+	document.getElementById("fk").innerHTML = language.de.fk;
 	document.getElementById("gk").innerHTML = language.de.gk;
 	document.getElementById("hk").innerHTML = language.de.hk;
 	document.getElementById("wk").innerHTML = language.de.wk;
