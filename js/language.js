@@ -388,6 +388,14 @@ function english(){
 	document.getElementById("at8").innerHTML = language.eng.at8;
 	}
 	
+	function language(){
+	if(window.location.hash == "#de"){
+		deutsch();
+	}else if(window.location.hash == "#eng"){
+		english();
+	}
+	
+}
 	
 	
 	

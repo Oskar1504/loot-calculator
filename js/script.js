@@ -265,20 +265,4 @@ function flaggen_emi_factor(){
 
 }
 
-function lol(a,b,c){
-	return [a+1.3,b+1,c+1];
-	
-}
-function test(a,b,c){
-	document.getElementById("debug").value= lol(a,b,c);
-	
-}
-
-function swag(){
-	if(window.location.hash == "#de"){
-		document.getElementById("debug").value = "de";
-	}
-}
-
-
 
