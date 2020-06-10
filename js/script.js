@@ -17,7 +17,7 @@ function showoutputitem(){
 	
 	document.getElementById("item_min").value = (min/amount)/ashen;
 	document.getElementById("item_max").value = (max/amount)/ashen;
-	document.getElementById("item_emipoints").value = emipoints;
+	document.getElementById("item_emipoints").value = emipoints/amount;
 	
 	document.getElementById("item_min_new").value = min;
 	document.getElementById("item_max_new").value = max;
@@ -69,8 +69,7 @@ function copyoption(quelle,ziel){
 function amount(){
 	document.getElementById("item_amount_new").value = document.getElementById("amount").value;
 	refreshdetailvalues();
-	refresh();
-	
+	change();
 }
 
 function changeashen(checkbox){
@@ -100,7 +99,7 @@ function showdetailvalues(){
 	document.getElementById("item_max").value = max*amount*ashen;
 	document.getElementById("item_amount").value = amount;
 	document.getElementById("item_ashen").value = ashen;
-	document.getElementById("item_emipoints").value = emipoints;
+	document.getElementById("item_emipoints").value = emipoints*amount;
 	
 }
 
@@ -116,7 +115,7 @@ function refreshdetailvalues(){
 	document.getElementById("item_max_new").value = max*amount*ashen;
 	document.getElementById("item_amount_new").value = amount;
 	document.getElementById("item_ashen_new").value = ashen;
-	document.getElementById("item_emipoints_new").value = emipoints;
+	document.getElementById("item_emipoints_new").value = emipoints*amount;
 }
 
 function speicherwertein(liste){
@@ -137,21 +136,16 @@ function speicherwertein(liste){
 function selectitem(item){
 
 	document.getElementById("selecteditem").innerHTML = item.options[item.selectedIndex].outerHTML;
-	
-	
+
 	showdetailvalues();
 	refreshdetailvalues();
 	
 }
 
 function additem(){
-
-	
 	speicherwertein("selecteditem");
 	copyoption("selecteditem","output");
-	sum();
-
-	
+	sum();	
 }
 
 function refresh(){
@@ -161,27 +155,59 @@ function refresh(){
 function sum(){
 	var wert_1 = 0,
 		wert_2 = 0,
+		wert_3 = 0,
 		sum_1 = 0,
 		sum_2 = 0,
+		sum_3 = 0,
 		wert = 0,
 		emipoints =0,
 		gold = 0,
+		multiplikator= document.getElementById("multiplikator").value,
 		liste = document.getElementById("output"),
 		lange = liste.options.length;
-	
 	for( var i = 0; i<=lange-1;i++){
 		
-		 wert = liste.options[i].value.split(",");
-		 wert_1 =parseInt(wert[0]);
-		 wert_2 =parseInt(wert[1]);
-		sum_1 = parseInt(sum_1 + wert_1);
-		sum_2 = parseInt(sum_2 + wert_2);
+		wert = liste.options[i].value.split(",");
+		wert_1 =parseInt(wert[0]);
+		wert_2 =parseInt(wert[1]);
+		wert_3 =parseInt(wert[2]);
+		
+		if(document.getElementById("output").options[i].classList.contains("oos") == true  && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "oos_flagge"){
+			wert_1 = Math.round(wert_1*flaggen_gold_factor());
+			wert_2 = Math.round(wert_2*flaggen_gold_factor());
+			wert_3 = Math.round(wert_3*flaggen_emi_factor());
+		}
+		if(document.getElementById("output").options[i].classList.contains("gh") == true   && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "gh_flagge"){
+			wert_1 = Math.round(wert_1*flaggen_gold_factor());
+			wert_2 = Math.round(wert_2*flaggen_gold_factor());
+			wert_3 = Math.round(wert_3*flaggen_emi_factor());
+			
+		}
+		if(document.getElementById("output").options[i].classList.contains("at") == true  && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "at_flagge"){
+			wert_1 = Math.round(wert_1*flaggen_gold_factor());
+			wert_2 = Math.round(wert_2*flaggen_gold_factor());
+			wert_3 = Math.round(wert_3*flaggen_emi_factor());
+		}
+		if(document.getElementById("output").options[i].classList.contains ("tc") == true && document.getElementById("flaggentyp").options[document.getElementById("flaggentyp").selectedIndex].id == "tc_flagge"){
+			wert_1 = Math.round(wert_1*flaggen_gold_factor());
+			wert_2 = Math.round(wert_2*flaggen_gold_factor());
+			wert_3 = Math.round(wert_3*flaggen_emi_factor());
+		}
+		
+		sum_1 = parseInt((sum_1 + wert_1)*multiplikator);
+		sum_2 = parseInt((sum_2 + wert_2)*multiplikator);
+		sum_3 = parseInt((sum_3 + wert_3)*multiplikator);
+		
+		
+		
 	}
-	gold = (sum_1+sum_2)/2;
+	
+	gold = Math.round(((sum_1+sum_2)/2)*multiplikator);
+	
 	document.getElementById("gesamt_min").value = sum_1;
 	document.getElementById("gesamt_max").value = sum_2;
 	document.getElementById("gesamt_gold").value = gold;
-	document.getElementById("gesamt_emipoints").value = emipoints;
+	document.getElementById("gesamt_emipoints").value = sum_3;
 }
 
 function change(){
@@ -197,19 +223,62 @@ function deleteitem(){
 	 refresh();
 }
 
-
-function deleteitem(){
-	var item = document.getElementById("output").options[document.getElementById("output").selectedIndex];
-	if(item.value != "0,0,0,0,0"){
-	 item.outerHTML = '';
+function flaggen_gold_factor(){
+	var factor= 1,
+		liste = document.getElementById("flaggenlevel"),
+		flaggenlevel_1 = liste.options[liste.selectedIndex].value;
+	
+	if(flaggenlevel_1 == 1){
+		factor = 1;
+	}else if(flaggenlevel_1 == 2){
+		factor = 1.33;
+	}else if(flaggenlevel_1 == 3){
+		factor = 1.67;
+	}else if(flaggenlevel_1 == 4){
+		factor = 2;
+	}else if(flaggenlevel_1 == 5){
+		factor = 2.5;
 	}
-	 refresh();
+	
+	return factor;
+
 }
 
+function flaggen_emi_factor(){
+	var factor= 1,
+		liste = document.getElementById("flaggenlevel"),
+		flaggenlevel_1 = liste.options[liste.selectedIndex].value;
+	
+	if(flaggenlevel_1 == 1){
+		factor = 1;
+	}else if(flaggenlevel_1 == 2){
+		factor = 1.2;
+	}else if(flaggenlevel_1 == 3){
+		factor = 1.4;
+	}else if(flaggenlevel_1 == 4){
+		factor = 1.6;
+	}else if(flaggenlevel_1 == 5){
+		factor = 2;
+	}
+	
+	return factor;
 
+}
 
+function lol(a,b,c){
+	return [a+1.3,b+1,c+1];
+	
+}
+function test(a,b,c){
+	document.getElementById("debug").value= lol(a,b,c);
+	
+}
 
-
+function swag(){
+	if(window.location.hash == "#de"){
+		document.getElementById("debug").value = "de";
+	}
+}
 
 
 

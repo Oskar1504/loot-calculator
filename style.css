@@ -7,6 +7,12 @@
 	color: red;
 	background-color: Coral;
 }
+
+input[type="lol"]
+{
+    font-size:24px;
+}
+
 body{
 	background: Dimgray;
 	font-size: 15px;
@@ -28,4 +34,25 @@ h2{
 h3{
 	font-size: 30px;
 	margin-bottom:10px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip_content {
+}
+.tooltip_content:hover + .tooltip_content_hidden {
+  opacity: 1;
+}
+
+
+.tooltip_content_hidden {
+  position: absolute;
+  margin-top: -35px;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity .1s ease-in .5s;
+  color: black;
+  font-weight: bold;
 }
