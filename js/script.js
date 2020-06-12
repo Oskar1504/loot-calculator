@@ -205,10 +205,10 @@ function sum(){
 	
 	gold = Math.round(((sum_1+sum_2)/2)*multiplikator);
 	
-	document.getElementById("gesamt_min").value = sum_1;
-	document.getElementById("gesamt_max").value = sum_2;
-	document.getElementById("gesamt_gold").value = gold;
-	document.getElementById("gesamt_emipoints").value = sum_3;
+	document.getElementById("gesamt_min").value = sum_1.toLocaleString();
+	document.getElementById("gesamt_max").value = sum_2.toLocaleString();
+	document.getElementById("gesamt_gold").value = gold.toLocaleString();
+	document.getElementById("gesamt_emipoints").value = sum_3.toLocaleString();
 }
 
 function change(){
