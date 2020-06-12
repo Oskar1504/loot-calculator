@@ -36,6 +36,11 @@ h3{
 	margin-bottom:10px;
 }
 
+.headline{
+	
+	vertical-align : middle;
+}
+
 .tooltip {
   position: relative;
 }

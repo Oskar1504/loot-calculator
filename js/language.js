@@ -24,7 +24,7 @@ var language = {
 		"text_flagge":"Botschafterflagge",
 		
 		"text_disclaimer_1":"Alle Werte sind von der",
-		"text_disclaimer_2":"Sea of Thieves Wiki.",
+		"text_disclaimer_2":"Die Grafiken sind von Sander Roli.",
 		
 		"text_liste_seelenorden":"Seelenorden",
 		"text_liste_goldsammler":"Goldsammler",
@@ -123,7 +123,7 @@ var language = {
 		"text_flagge":"Emissary Flag",
 		
 		"text_disclaimer_1":"All values are from ",
-		"text_disclaimer_2":"Sea of Thieves Wiki.",
+		"text_disclaimer_2":"The graphics are from Sander Roli.",
 		
 		"text_liste_seelenorden":"Order of Souls",
 		"text_liste_goldsammler":"Goldhoarder",
